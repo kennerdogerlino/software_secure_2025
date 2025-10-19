@@ -1,4 +1,4 @@
-#imports the required modules
+#Imports the required modules
 from cryptography.fernet import Fernet
 
 #Open the key
@@ -8,12 +8,13 @@ with open('filekey.key', 'rb') as filekey:
 #Use the key
 fernet = Fernet(key)
 
-#open the encrypted file
+#Open the encrypted file
 with open('Encrypted.docx', 'rb') as encrypted_file:
     encrypted = encrypted_file.read()
 
+#Decrypts the file
 decrypted = fernet.decrypt(encrypted)
 
+#Writes the deecrypted file
 with open('Unencrypted.docx', 'wb') as decrypted_file:
     decrypted_file.write(decrypted)
-    
